@@ -1,29 +1,37 @@
 class Clock {
   private LightBoard disp;
   private color oldAm;
+  private boolean is12Hour;
   
   public Clock() {
-    LightBoard disp = new LightBoard(6,6);
-    disp.setRowColor(0, color(255));
-    disp.setRowColor(1, color(255));
-    disp.setRowColor(2, color(255));
-    disp.setRowColor(3, color(255));
-    disp.setRowColor(4, color(255));
-    disp.setRowColor(5, color(255));
-    this.oldAm = PM_INACTIVE;
-    this.disp = disp;
+    this(false);
   }
+  
   public Clock(LightBoard display) {
+    this(display, false);
+  }
+  
+  public Clock(boolean is12Hour) {
+    this(new LightBoard(6,6), is12Hour);
+    this.disp.setRowColor(0, color(255));
+    this.disp.setRowColor(1, color(255));
+    this.disp.setRowColor(2, color(255));
+    this.disp.setRowColor(3, color(255));
+    this.disp.setRowColor(4, color(255));
+    this.disp.setRowColor(5, color(255));
+  }
+  
+  public Clock(LightBoard display, boolean is12Hour) {
     this.disp = display;
     this.oldAm = display.getDisableColor(3, 2);
-    System.out.println(hex(display.getDisableColor(3, 2)));
+    this.is12Hour = is12Hour;
   }
   
   private void refreshClock() {
     setRowBinary(0, year() % 100);
     setRowBinary(1, month());
     setRowBinary(2, day());
-    if (IS_12_HOUR) {
+    if (this.is12Hour) {
       int hour = hour();
       int hmod = hour % 12;
       setRowBinary(3, hmod == 0 ? 12 : hmod);

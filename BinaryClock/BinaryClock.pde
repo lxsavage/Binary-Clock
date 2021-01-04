@@ -1,10 +1,20 @@
 Clock clk;
 
 void setup() {
-  size(600, 600);
+  size(800, 800);
   frameRate(2);
-  
-  clk = new Clock();
+  initClock();
+  background(BG);
+  clk.draw();
+}
+
+void draw() {
+  background(BG);
+  clk.draw();
+}
+
+void initClock() {
+  clk = new Clock(IS_12_HOUR);
   LightBoard disp = clk.getDisplayBoard();
 
   disp.setRowColor(0, YEAR_ACTIVE);
@@ -21,16 +31,21 @@ void setup() {
   disp.setRowDisableColor(4, MINUTE_INACTIVE);
   disp.setRowDisableColor(5, SECOND_INACTIVE);
   
-  disp.setDisableColor(1, 4, YEAR_INACTIVE);
-  disp.setDisableColor(1, 5, YEAR_INACTIVE);
+  if (SHOW_CASIDOTS) {
+    disp.setDisableColor(1, 4, YEAR_INACTIVE);
+    disp.setDisableColor(1, 5, YEAR_INACTIVE);
+    
+    disp.setDisableColor(4, 3, HOUR_INACTIVE);
+    disp.setDisableColor(5, 3, MINUTE_INACTIVE);
+  }
+  
   if (IS_12_HOUR) {
     disp.setDisableColor(3, 1, PM_INACTIVE);
     disp.setDisableColor(3, 3, PM_INACTIVE);
   } else {
     disp.setDisableColor(3, 2, DAY_INACTIVE);
   }
-  disp.setDisableColor(4, 3, HOUR_INACTIVE);
-  disp.setDisableColor(5, 3, MINUTE_INACTIVE);
+  
   
   disp.setTileHidden(1,0,true);
   disp.setTileHidden(1,1,true);
@@ -42,12 +57,4 @@ void setup() {
     disp.setDisableColor(3, 0, PM_INACTIVE);
     disp.setTileHidden(3, 0, false);
   }
-
-  background(BG);
-  disp.draw();
-}
-
-void draw() {
-  background(BG);
-  clk.draw();
 }

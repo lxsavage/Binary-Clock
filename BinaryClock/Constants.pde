@@ -1,19 +1,33 @@
-final color BG = color(235);
-final boolean IS_12_HOUR = false;
+// CONFIGURATION //
 
-final color YEAR_ACTIVE = color(84,173,193);
-final color MONTH_ACTIVE = color(241,202,54);
-final color DAY_ACTIVE = color(150,173,41);
-final color HOUR_ACTIVE = color(174,66,47);
-final color MINUTE_ACTIVE = color(47,174,66);
-final color SECOND_ACTIVE = color(47,60,126);
+final boolean IS_12_HOUR    = false;
+final boolean SHOW_CASIDOTS = true;
 
-final color PM_ACTIVE = color(255,165,0);
-final color PM_INACTIVE = color(255,165,0,25);
+final float ACTIVE_ALPHA = 1;
+final float INACTIVE_ALPHA = .25;
 
-final color YEAR_INACTIVE = color(84,173,193,25);
-final color MONTH_INACTIVE = color(241,202,54,25);
-final color DAY_INACTIVE = color(150,173,41,25);
-final color HOUR_INACTIVE = color(174,66,47,25);
-final color MINUTE_INACTIVE = color(47,174,66,25);
-final color SECOND_INACTIVE = color(47,60,126,25);
+final color BG     = color(235        );
+final color AMPM   = color(255,165,  0);
+final color YEAR   = color(229, 57, 53);
+final color MONTH  = color(251,140,  0);
+final color DAY    = color(253,216, 53);
+final color HOUR   = color( 67,160, 71);
+final color MINUTE = color(  3,155,229);
+final color SECOND = color( 94, 53,177);
+
+// END CONFIGURATION //
+
+final color YEAR_ACTIVE     = lerpColor(BG, YEAR  , ACTIVE_ALPHA);
+final color MONTH_ACTIVE    = lerpColor(BG, MONTH , ACTIVE_ALPHA);
+final color DAY_ACTIVE      = lerpColor(BG, DAY   , ACTIVE_ALPHA);
+final color HOUR_ACTIVE     = lerpColor(BG, HOUR  , ACTIVE_ALPHA);
+final color MINUTE_ACTIVE   = lerpColor(BG, MINUTE, ACTIVE_ALPHA);
+final color SECOND_ACTIVE   = lerpColor(BG, SECOND, ACTIVE_ALPHA);
+final color PM_ACTIVE       = lerpColor(BG, AMPM  , ACTIVE_ALPHA);
+final color YEAR_INACTIVE   = lerpColor(BG, YEAR  , INACTIVE_ALPHA);
+final color MONTH_INACTIVE  = lerpColor(BG, MONTH , INACTIVE_ALPHA);
+final color DAY_INACTIVE    = lerpColor(BG, DAY   , INACTIVE_ALPHA);
+final color HOUR_INACTIVE   = lerpColor(BG, HOUR  , INACTIVE_ALPHA);
+final color MINUTE_INACTIVE = lerpColor(BG, MINUTE, INACTIVE_ALPHA);
+final color SECOND_INACTIVE = lerpColor(BG, SECOND, INACTIVE_ALPHA);
+final color PM_INACTIVE     = lerpColor(BG, AMPM  , INACTIVE_ALPHA);

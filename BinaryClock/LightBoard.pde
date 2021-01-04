@@ -74,8 +74,8 @@ class LightBoard {
   
   public void draw() {
     noStroke();
-    for (int r = 0; r < this.board.length; r++) {
-      for (int c = 0; c < this.board[0].length; c++) {
+    for (int r = 0; r < this.getRowCount(); r++) {
+      for (int c = 0; c < this.getColumnCount(); c++) {
         int posX = this.cellWidth * c;
         int posY = this.cellHeight * r;
         if (this.board[r][c]) {
