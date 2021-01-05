@@ -1,7 +1,7 @@
 Clock clk;
 
 void setup() {
-  size(800, 800);
+  size(600, 600);
   frameRate(2);
   initClock();
   background(BG);
@@ -15,7 +15,7 @@ void draw() {
 
 void initClock() {
   clk = new Clock(IS_12_HOUR);
-  LightBoard disp = clk.getDisplayBoard();
+  DrawableLightBoard disp = (DrawableLightBoard) clk.getDisplay();
 
   disp.setRowColor(0, YEAR_ACTIVE);
   disp.setRowColor(1, MONTH_ACTIVE);

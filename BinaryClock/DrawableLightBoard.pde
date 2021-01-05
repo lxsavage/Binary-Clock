@@ -1,4 +1,4 @@
-class LightBoard {
+class DrawableLightBoard implements Display, Drawable {
   private boolean[][] board;
   private boolean[][] hiddenTiles;
   private color[][] boardColor;
@@ -6,7 +6,7 @@ class LightBoard {
   private int cellWidth;
   private int cellHeight;
   
-  public LightBoard(int rows, int columns) {
+  public DrawableLightBoard(int rows, int columns) {
     this.board = new boolean[rows][columns];
     this.boardColor = new color[rows][columns];
     this.hiddenTiles = new boolean[rows][columns];

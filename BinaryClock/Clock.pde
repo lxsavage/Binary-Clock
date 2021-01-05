@@ -1,5 +1,5 @@
-class Clock {
-  private LightBoard disp;
+class Clock implements Drawable {
+  private Display disp;
   private color oldAm;
   private boolean is12Hour;
   
@@ -7,12 +7,12 @@ class Clock {
     this(false);
   }
   
-  public Clock(LightBoard display) {
+  public Clock(Display display) {
     this(display, false);
   }
   
   public Clock(boolean is12Hour) {
-    this(new LightBoard(6,6), is12Hour);
+    this(new DrawableLightBoard(6,6), is12Hour);
     this.disp.setRowColor(0, color(255));
     this.disp.setRowColor(1, color(255));
     this.disp.setRowColor(2, color(255));
@@ -21,7 +21,7 @@ class Clock {
     this.disp.setRowColor(5, color(255));
   }
   
-  public Clock(LightBoard display, boolean is12Hour) {
+  public Clock(Display display, boolean is12Hour) {
     this.disp = display;
     this.oldAm = display.getDisableColor(3, 2);
     this.is12Hour = is12Hour;
@@ -66,12 +66,14 @@ class Clock {
     }
   }
   
-  public LightBoard getDisplayBoard() {
+  public Display getDisplay() {
     return this.disp;
   }
   
   public void draw() {
     this.refreshClock();
-    this.disp.draw();
+    if (this.disp instanceof Drawable) {
+      ((Drawable) this.disp).draw();
+    }
   }
 }
