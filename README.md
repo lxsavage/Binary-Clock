@@ -15,7 +15,7 @@ The clock has a different colored row for each different reading of:
 - Minute
 - Second
 
-For each row, using the lit up dots as `1`'s, and non-lit dots as `0`'s, you read the row as a binary number, which represents the value of the row. For example:
+For each row, using the lit up dots as `1`'s, and unlit dots as `0`'s, you read the row as a binary number, which represents the value of the row. For example:
 
 - The year row is `010100`, which translated to base-10 is `20`, for the year 2020
 - The month row is `1100`, which translated to base-10 is `12`, for the month of December
@@ -42,5 +42,6 @@ Colors and the 12/24-hour mode can be changed within the `Constraints.pde` file.
 
 - `BG` is the background color of the sketch.
 - `IS_12_HOUR` determines whether to show the clock in 12-hour format (AM/PM) or 24-hour format.
-- Any variable suffixed `_INACTIVE` represents the color of the unlit dots in that row.
-- Any variable suffixed `_ACTIVE` represents the color of the lit dots in that row.
+- AMPM is the PM light for 12-hour time
+- Below AMPM is each time row, and what color they should be
+- Don't modify the values below the `// END CONFIGURATION //` tag. These are for calculating active and inactive colors for the clock lights.
